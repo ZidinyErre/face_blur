@@ -43,3 +43,11 @@ plt.imshow(img_blur)
 plt.axis('off')
 # enlève les axes (plus propre)
 plt.show()
+
+# Le souci, c’est les types de données
+
+# OpenCV → NumPy array
+
+# PIL → objet Image
+
+# Matplotlib → attend du RGB NumPy
