@@ -1,5 +1,6 @@
 import cv2 
 import matplotlib.pyplot as plt
+from PIL import Image , ImageFilter
 # Importe OpenCV lecture d’images, vision par ordinateur.
 # Importe Matplotlib → afficher l’image dans une fenêtre.
 
@@ -31,9 +32,13 @@ for (x, y , w, h) in face:
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 # Convertit l’image BGR en RGB
 
+my_img = Image.open(img_rgb)
+img_blur = my_img.filter(ImageFilter.BLUR)
+
 plt.figure(figsize=(20, 10))
 # Crée une fenêtre d’affichage grande.
 plt.imshow(img_rgb)
+plt.imshow(img_blur)
 # Affiche l'image
 plt.axis('off')
 # enlève les axes (plus propre)
