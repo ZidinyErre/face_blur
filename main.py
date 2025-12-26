@@ -5,7 +5,7 @@ import numpy
 # Importe OpenCV lecture d’images, vision par ordinateur.
 # Importe Matplotlib → afficher l’image dans une fenêtre.
 
-img_path = '466847635_10230006725490282_7365527101056126842_n.jpg'
+img_path = 'put your file her '
 # chemin de l'image 
 img = cv2.imread(img_path)
 # Charge l’image en mémoire. Résultat = matrice de pixels (format BGR).
@@ -38,20 +38,12 @@ for (x, y , w, h) in face:
 
 
 # Boucle sur chaque visage détecté.
-# Dessine un rectangle vert autour du visage : *coin haut-gauche *coin bas-droit *épaisseur = 4 pixels
+
 
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 # Convertit l’image BGR en RGB
 
-# my_img = Image.fromarray(img_rgb)
-# img_blur = my_img.filter(ImageFilter.GaussianBlur(12))
-# numpy_img = numpy.array(img_blur)
 
-# img_np_rgb = cv2.cvtColor(numpy_img, cv2.COLOR_BGR2RGB)
-# img_change = Image(img_rgb) je change en  objet PIL image car c'est un numpy.array
-# img_blur = img_change.filter(ImageFilter.BLUR) j'applique le BLUR que je veux même si mon objectif 
-# final est de l'applqiue que sur le visage de la personne mais ma première étape ser un blur total
-# Puis ici je ramène l'image bluré en numpy array et je l'affiche
 
 
 plt.figure(figsize=(20, 10))
