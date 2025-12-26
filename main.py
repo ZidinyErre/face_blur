@@ -27,15 +27,24 @@ face = face_classifier.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbor
 
 for (x, y , w, h) in face:
     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 4)
+    the_face = img[y: y+h, x: x+w]
+    my_img = Image.fromarray(the_face)
+    img_blur = my_img.filter(ImageFilter.GaussianBlur(12))
+    numpy_img = numpy.array(img_blur)
+
+# Il faut que je réinjecte dans l'img
+
+
 # Boucle sur chaque visage détecté.
 # Dessine un rectangle vert autour du visage : *coin haut-gauche *coin bas-droit *épaisseur = 4 pixels
 
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 # Convertit l’image BGR en RGB
 
-my_img = Image.fromarray(img_rgb)
-img_blur = my_img.filter(ImageFilter.GaussianBlur(12))
-numpy_img = numpy.array(img_blur)
+# my_img = Image.fromarray(img_rgb)
+# img_blur = my_img.filter(ImageFilter.GaussianBlur(12))
+# numpy_img = numpy.array(img_blur)
+
 # img_np_rgb = cv2.cvtColor(numpy_img, cv2.COLOR_BGR2RGB)
 # img_change = Image(img_rgb) je change en  objet PIL image car c'est un numpy.array
 # img_blur = img_change.filter(ImageFilter.BLUR) j'applique le BLUR que je veux même si mon objectif 
@@ -45,7 +54,7 @@ numpy_img = numpy.array(img_blur)
 
 plt.figure(figsize=(20, 10))
 # Crée une fenêtre d’affichage grande.
-# plt.imshow(img_rgb)
+plt.imshow(img_rgb)
 plt.imshow(numpy_img)
 # Affiche l'image
 plt.axis('off')
