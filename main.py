@@ -5,7 +5,7 @@ import numpy
 # Importe OpenCV lecture d’images, vision par ordinateur.
 # Importe Matplotlib → afficher l’image dans une fenêtre.
 
-img_path = 'maxresdefault.jpg'
+img_path = '466847635_10230006725490282_7365527101056126842_n.jpg'
 # chemin de l'image 
 img = cv2.imread(img_path)
 # Charge l’image en mémoire. Résultat = matrice de pixels (format BGR).
@@ -26,11 +26,13 @@ face = face_classifier.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbor
 # Cherche des visages dans l’image. Résultat :une liste de rectangles chaque rectangle = (x, y, w, h)
 
 for (x, y , w, h) in face:
-    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 4)
+    # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 4)
     the_face = img[y: y+h, x: x+w]
     my_img = Image.fromarray(the_face)
     img_blur = my_img.filter(ImageFilter.GaussianBlur(12))
     numpy_img = numpy.array(img_blur)
+    img[y: y+h, x: x+w] = numpy_img
+
 
 # Il faut que je réinjecte dans l'img
 
@@ -55,7 +57,7 @@ img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 plt.figure(figsize=(20, 10))
 # Crée une fenêtre d’affichage grande.
 plt.imshow(img_rgb)
-plt.imshow(numpy_img)
+# plt.imshow(numpy_img)
 # Affiche l'image
 plt.axis('off')
 # enlève les axes (plus propre)
